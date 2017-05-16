@@ -1,0 +1,119 @@
+
+	<div class="col-md-8">
+		<div class="row">
+			
+				<div class="col-md-3">
+					<f:if condition="{comment.user.image}">
+						<f:then>
+							<f:image src="fileadmin/user_upload/{comment.user.image}" width="50"/>
+						</f:then>
+						<f:else>
+							<f:image src="typo3conf/ext/news_comment/Resources/Public/images/icon-user-default.png" width="50"/>
+						</f:else>
+					</f:if>
+				</div>
+				<div class="col-md-9" >
+					<f:if condition="{comment.website}">
+						<f:then>
+							<a href="{comment.website}" target="_blank"><b>{comment.username}</b></a>
+						</f:then>
+						<f:else>
+							<b>{comment.username}</b>
+						</f:else>
+					</f:if>
+					<span class="badge"><f:format.date format="{settings.dateformat}">{comment.crdate}</f:format.date></span>
+				</div>
+					
+		</div>
+		<div class="row" >
+				<div  class="col-md-12">
+					<f:if condition="{settings.limitsDescriptionLength}">
+						<f:then>
+
+							<div><f:format.raw><f:format.crop maxCharacters="{settings.limitsDescriptionLength}" append="[<a href='javascript:void(0);' class='viewmore'>...View More</a>]">{comment.description}</f:format.crop></f:format.raw></div>
+
+							<div style="display:none;"> <f:format.nl2br><f:format.raw>{comment.description}&nbsp;[<a href='javascript:void(0);' class='hidethis' >Hide</a>]</f:format.raw></f:format.nl2br><br></div>
+						</f:then>
+						<f:else>
+							<f:format.nl2br><f:format.raw>{comment.description}</f:format.raw></f:format.nl2br><br>
+						</f:else>
+					</f:if>
+				</div>		
+		</div>
+		<f:if condition="{settings.enableReplyToComment} == 1">
+			<f:then>
+				<div class="row" >
+					<div  class="col-md-12">
+						<button class="btn btn-primary btn-xs comment-reply-button" btnvalue="{comment.uid}" type="button"><f:translate key='tx_newscomment_domain_model_comment.lblreply' /></button>
+					</div>
+				</div>
+			</f:then>
+		</f:if>
+		
+	</div>
+
+	<f:if condition="{settings.enableRating} == 1">
+		<f:then>
+			<div class="col-md-4">
+				<div class="pull-right">
+					<div id="tutorial-{comment.uid}" class="hide-comment-rating-box">
+						<input type="hidden" name="rating" id="rating" value="{comment.rate}" />
+						<ul onMouseOut="resetRating({comment.uid});">
+							<f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="foo" key="number" iteration="itemIteration">
+								<f:if condition="{comment.allowrating}">
+									<f:then>
+										<f:if condition="{settings.enableRatingAtLogin} == 1">
+											<f:then>	
+
+												<f:if condition="{currentuser.uid}">
+													<f:then>		
+
+											  			<li class="{f:if(condition:'{itemIteration.cycle} <= {comment.rate}', then:'selected')}" id="{settings.commentAnchorPrefix}" onmouseover="highlightStar(this,{comment.uid});" onmouseout="removeHighlight({comment.uid});" onClick="addRating(this,{comment.uid});">&#9733;</li>  
+											  		</f:then>
+											  		<f:else>
+											  			<li class="{f:if(condition:'{itemIteration.cycle} <= {comment.rate}', then:'selected')}" id="{settings.commentAnchorPrefix}" onmouseover="highlightStar(this,{comment.uid});" onmouseout="removeHighlight({comment.uid});" onClick="requireLogin();">&#9733;</li>  
+											  		</f:else>
+											  	</f:if>
+											</f:then>
+											<f:else>
+													<li class="{f:if(condition:'{itemIteration.cycle} <= {comment.rate}', then:'selected')}" id="{settings.commentAnchorPrefix}" onmouseover="highlightStar(this,{comment.uid});" onmouseout="removeHighlight({comment.uid});" onClick="addRating(this,{comment.uid});">&#9733;</li>  
+											</f:else>
+										</f:if>
+								</f:then>
+								<f:else>
+										<li class="{f:if(condition:'{itemIteration.cycle} <= {comment.rate}', then:'selected')}" id="{settings.commentAnchorPrefix}" onmouseover="highlightStar(this,{comment.uid});" onmouseout="removeHighlight({comment.uid});" onClick="notAllowRating();">&#9733;</li> 
+								</f:else>
+								</f:if>
+							</f:for>
+						</ul>
+					</div>
+					<div class="hide-comment-rating-box">
+						<f:translate key="tx_newscomment_domain_model_comment.lblvotes" />:<f:count subject="{comment.rating}" />
+					</div>
+					
+				</div>
+			</div>
+		</f:then>
+	</f:if>
+
+	
+
+	<div class="comment-form-reply_{comment.uid}">&nbsp;</div>
+
+	<div role="separator" class="divider"></div>
+
+	<f:if condition="{comment.parentcomment}">
+		<f:then>
+			<f:for each="{comment.parentcomment}" as="prcomment">
+				<div class="row inner-comment">
+					<f:if condition="{prcomment.spam} == 0">
+						<f:then>
+							<div class="col-md-12">
+								<f:render partial="Comment/Comment" arguments="{comment:prcomment}" />
+							</div>
+						</f:then>
+					</f:if>	
+				</div>
+			</f:for>
+		</f:then>
+	</f:if>

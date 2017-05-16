@@ -1,0 +1,85 @@
+{namespace m=DRCSystems\NewsComment\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="main">
+
+<h1><f:translate key="tx_newscomment_domain_model_comment.lblcomments" />(<f:count subject="{comments}" />)</h1>
+
+<f:render partial="FormErrors" arguments="{object:newComment}" />
+
+<f:flashMessages />
+
+<div  id="ad-success" class="alertmessages" >
+	<h4 class="alert alert-success" role="alert"><f:translate key="tx_newscomment_domain_model_comment.thanksrating_msg" /><h4>
+</div>
+
+<div id="ad-notallowed" class="alertmessages">
+	<h4 class="alert alert-warning" role="alert"><f:translate key="tx_newscomment_domain_model_comment.notallowrating_msg" /><h4>
+</div>
+
+<div id="ad-login" class="alertmessages">
+	<h4 class="alert alert-warning" role="alert"><f:translate key="tx_newscomment_domain_model_comment.pleaselogin_msg" /><h4>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<f:render partial="Comment/FormFields" arguments="{_all}" />
+	</div>
+</div>
+
+<f:if condition="{comments->f:count()} > 0">
+<f:then>
+
+	<div class="row" style="{f:if(condition:'{settings.showPagination} == 1', then:'display:block;')}{f:if(condition:'{settings.showPagination} == 0', then:'display:none;')}">
+		
+		<div class="col-md-12">
+			<div class="pagination-block text-center pull-right" >
+				<m:Paginate objects="{comments}" as="allcomments" configuration="{itemsPerPage: settings.recordPerPage, insertAbove: 1, insertBelow: 1}">
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+			<f:render partial="Comment/Search" arguments="{_all}" />
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="demo-table">
+					<f:for each="{allcomments}" as="comment">
+						<div class="row">
+							<f:render partial="Comment/Comment" arguments="{_all}" />
+							
+						</div>
+					</f:for>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="{f:if(condition:'{settings.showPagination} == 1', then:'display:block;')}{f:if(condition:'{settings.showPagination} == 0', then:'display:none;')}">
+		<div class="col-md-12">
+			<div class="pagination-block text-center pull-right" >
+				</m:Paginate>
+			</div>
+		</div>
+	</div>
+
+	<f:if condition="{settings.showTotalRatings}">
+		<f:then>
+			<div class="row">
+				<div class="col-md-12">
+					<h4><span class="label label-primary pull-right"><f:translate key="tx_newscomment_domain_model_comment.totalopinion" />:{totalVotes}</span></h4>
+					
+				</div>
+			</div>
+		</f:then>
+	</f:if>
+
+</f:then>
+<f:else>
+	<h4><span class="label label-info"><f:translate key="tx_newscomment_domain_model_comment.nocommentsfound_msg" /></span></h4>
+	
+</f:else>
+</f:if>
+
+
+</f:section>

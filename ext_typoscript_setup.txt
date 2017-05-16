@@ -1,0 +1,29 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+                subclasses {
+                    Tx_NewsComment_Users = DRCSystems\NewsComment\Domain\Model\Users
+					
+          		}
+            }
+            DRCSystems\NewsComment\Domain\Model\Users {
+                mapping {
+                    tableName = fe_users
+                    recordType = 0
+                }
+            }
+            
+    	}
+    }
+}
+
+page.includeCSS {
+    file1 = EXT:news_comment/Resources/Public/Css/newscomment.css   
+}
+
+page.includeJSFooter {
+    file001 = EXT:news_comment/Resources/Public/Js/general.js
+}

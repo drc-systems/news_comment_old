@@ -1,0 +1,22 @@
+<div id="form-comment-reply">
+	<f:form action="reply"  name="newComment" class="form-comment" object="{newComment}" addQueryString="1" >
+		<div class="col-md-12 pull-left">
+			<h3><f:translate key="tx_newscomment_domain_model_comment.lblwritenewcomments" /> </h3>
+			<div class="form-group">
+				<f:form.textarea property="description" id="comment-description" placeholder="<f:translate key='tx_newscomment_domain_model_comment.description' />*" cols="60" rows="10"  class="validatethis form-control" />
+			</div>
+		
+			<div class="form-group">
+				<f:form.textfield property="username" id="comment-username" placeholder="<f:translate key='tx_newscomment_domain_model_comment.username' />*"  class="validatethis form-control" />
+			</div>
+
+			<div class="form-group">
+				<f:form.textfield property="usermail" placeholder="<f:translate key='tx_newscomment_domain_model_comment.usermail' />*" type="email" id="usermail" class="validatethis form-control" />
+			</div>
+		
+			<f:form.hidden property="newsuid" value="{newsID}"/>
+			<f:form.hidden name="pageid" id="pageid" value="{pageid}"/>
+			<f:form.submit id="newsCommentSubmit" value="Submit" class="btn btn-primary pull-right btn-xs " />
+		</div>
+	</f:form>
+</div>

@@ -1,0 +1,139 @@
+<f:if condition="{configuration.insertAbove}">
+	<f:render section="paginator" arguments="{pagination: pagination}" />
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+	<f:render section="paginator" arguments="{pagination: pagination}" />
+</f:if>
+
+
+<f:section name="paginator">
+
+		<div class="pagination-block text-center">
+			<ul class="pagination">
+
+				<!-- Previous -->
+				<f:if condition="{pagination}">
+				<f:then>
+					<f:if condition="{pagination.previousPage}">
+						<f:then>
+							<li class="prev">
+								<f:if condition="{pagination.previousPage} > 1">
+									<f:then>
+										<!-- <f:translate key="previous" /> -->
+										<f:widget.link arguments="{currentPage: pagination.previousPage}">
+											<span> &lt; </span>
+										</f:widget.link>
+									</f:then>
+									<f:else>
+										<f:widget.link>
+											<span> &lt; </span>
+										</f:widget.link>
+									</f:else>
+								</f:if>
+							</li>
+						</f:then>
+						<f:else>
+							<li class="prev">
+								<!-- <span><f:translate key="pagination_previous" /></span> -->
+							</li>
+						</f:else>
+					</f:if>
+				</f:then>
+				</f:if>
+				<!-- First is implement but currently hide-->
+					
+					<f:if condition="{pagination.current} > 1">
+						<f:if condition="{pagination.isFirstPage}">
+							<f:then>
+								<li class="first">
+									<!-- ERSTE -->
+								</li>
+							</f:then>
+							<f:else>
+								<li class="first">
+									<f:widget.link>
+										<f:translate key="paginationfirst" />
+									</f:widget.link>
+								</li>
+							</f:else>
+						</f:if>
+					</f:if>
+					
+				
+				
+				
+
+				<!-- Numbered pages -->
+				<f:for each="{pagination.pages}" as="page">
+					<f:if condition="{page.isCurrent}">
+						<f:then>
+							<li class="active">
+								<a class="active" href="javascript:void(0);"><span>{page.number}</span></a>
+							</li>
+						</f:then>
+						<f:else>
+							<li>
+								<f:if condition="{page.number} > 1">
+									<f:then>
+										<f:widget.link arguments="{currentPage: page.number}" >
+											<span>{page.number}</span>
+										</f:widget.link>
+									</f:then>
+									<f:else>
+										<f:widget.link>
+											<span>{page.number}</span>
+										</f:widget.link>
+									</f:else>
+								</f:if>
+							</li>
+						</f:else>
+					</f:if>
+				</f:for>
+
+				
+
+				<!-- Last is implement but currently hide-->
+				
+					<li class="last">
+						<f:if condition="{pagination}">
+						<f:then>
+							<f:if condition="{pagination.isLastPage}">
+								<f:then>
+									<!-- <span>LETZTE<f:translate key="pagination_last" /></span> -->
+								</f:then>
+								<f:else>
+									<f:widget.link arguments="{currentPage: pagination.lastPage}" style="background:none;">
+										<span><f:translate key="paginationlast" /></span>
+									</f:widget.link>
+								</f:else>
+							</f:if>
+						</f:then>
+						</f:if>
+					</li>
+
+				<!-- Next -->
+				<f:if condition="{pagination}">
+					<f:then>
+						<li class="next">
+							<f:if condition="{pagination.nextPage}">
+								<f:then>
+									<f:widget.link arguments="{currentPage: pagination.nextPage}" style="background:none;">
+										<span>&gt;</span>
+									</f:widget.link>
+								</f:then>
+								<f:else>
+									<!-- <span><f:translate key="pagination_next" /></span> -->
+								</f:else>
+							</f:if>
+						</li>
+					</f:then>
+				</f:if>
+				
+
+			</ul>
+		</div>
+	
+</f:section>

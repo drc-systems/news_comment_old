@@ -1,0 +1,22 @@
+<f:form action="search"  name="searchComment" addQueryString="1" class="form-inline" >
+	<f:if condition="{settings.showSearch} == 1">
+		<f:then>
+			<div class="col-md-8 divleft">
+				<div class="form-group">
+					<label class="sr-only" for="searchterm"><f:translate key="tx_newscomment_domain_model_comment.search" /></label>
+					<f:form.textfield value="{params.searchterm}" class="form-control" id="searchterm" name="searchterm" placeholder='<f:translate key="tx_newscomment_domain_model_comment.searchstring" />'/>
+				</div>
+				<button type="submit" class="btn btn-default"><f:translate key="tx_newscomment_domain_model_comment.search" /></button>
+			</div>
+		</f:then>
+	</f:if>
+	<f:if condition="{settings.showSortBy} == 1">
+		<f:then>
+			<div class="col-md-4">
+				<div class="dropdown pull-right">
+					<f:form.select class="form-control" id="orderby" name="orderby"  optionValueField="id" value="{params.sort}"  options="{sortOrderCombo}"  />
+				</div>
+			</div>
+		</f:then>
+	</f:if>
+</f:form>

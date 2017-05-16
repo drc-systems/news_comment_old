@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T16:18:28Z" product-name="news_comment">
+		<header/>
+		<body>
+			<trans-unit id="newsuid.description">
+				<source>newsuid</source>
+			</trans-unit>
+			<trans-unit id="parentcomment.description">
+				<source>parentcomment</source>
+			</trans-unit>
+			<trans-unit id="username.description">
+				<source>username</source>
+			</trans-unit>
+			<trans-unit id="usermail.description">
+				<source>usermail</source>
+			</trans-unit>
+			<trans-unit id="usersession.description">
+				<source>usersession</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="rate.description">
+				<source>rate</source>
+			</trans-unit>
+			<trans-unit id="user.description">
+				<source>user</source>
+			</trans-unit>
+			<trans-unit id="rating.description">
+				<source>rating</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

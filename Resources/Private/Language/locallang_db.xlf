@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T16:18:28Z" product-name="news_comment">
+		<header/>
+		<body>
+			<trans-unit id="tx_newscomment_domain_model_comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.newsuid">
+				<source>Newsuid</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.parentcomment">
+				<source>Reply Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.username">
+				<source>User Name</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.usermail">
+				<source>User Email</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.usersession">
+				<source>User SessionId</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.description">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.rate">
+				<source>Average Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.rate">
+				<source>Rate</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.usersession">
+				<source>User SessionId</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.crdate">
+				<source>Created Date</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.hidden">
+				<source>Hide</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_users">
+				<source>Users</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_NewsComment_Users">
+				<source>News Comment Users</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.ipaddress">
+				<source>IP Address</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.spam">
+				<source>Is Spam</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,118 @@
+
+plugin.tx_newscomment_newscomment {
+	view {
+		templateRootPaths.0 = {$plugin.tx_newscomment_newscomment.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_newscomment_newscomment.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_newscomment_newscomment.view.layoutRootPath}
+	}
+	
+	settings {
+		jQuery{
+			require = 1
+			version = jquery-2.2.3.min.js
+		}
+		siteURL = {$baseURL}
+		requireCommentApproval = {$plugin.tx_newscomment_newscomment.settings.requireCommentApproval}
+		
+		addJsValidations = {$plugin.tx_newscomment_newscomment.settings.addJsValidations}
+
+		showPagination = {$plugin.tx_newscomment_newscomment.settings.showPagination}
+
+		recordPerPage = {$plugin.tx_newscomment_newscomment.settings.recordPerPage}
+
+		showSearch = {$plugin.tx_newscomment_newscomment.settings.showSearch}
+
+		showSortBy = {$plugin.tx_newscomment_newscomment.settings.showSortBy}
+
+		enableRating = {$plugin.tx_newscomment_newscomment.settings.enableRating}
+
+		enableRatingAtLogin = {$plugin.tx_newscomment_newscomment.settings.enableRatingAtLogin}
+
+		showTotalRatings = {$plugin.tx_newscomment_newscomment.settings.showTotalRatings}
+
+		badwordFilterString = {$plugin.tx_newscomment_newscomment.settings.badwordFilterString}
+
+		dateformat = {$plugin.tx_newscomment_newscomment.settings.dateformat}
+
+		enableReplyToComment = {$plugin.tx_newscomment_newscomment.settings.enableReplyToComment}
+
+		limitsDescriptionLength = {$plugin.tx_newscomment_newscomment.settings.limitsDescriptionLength}
+
+		enableWebsiteField = {$plugin.tx_newscomment_newscomment.settings.enableWebsiteField}
+
+		notification {
+			senderEmail = {$plugin.tx_newscomment_newscomment.settings.notification.senderEmail}
+
+			senderName = {$plugin.tx_newscomment_newscomment.settings.notification.senderName}
+
+			newsauthor {
+				sendMailToNewsAuthor = {$plugin.tx_newscomment_newscomment.settings.notification.newsauthor.sendMailToNewsAuthor}
+
+				authorMailSubject = {$plugin.tx_newscomment_newscomment.settings.notification.newsauthor.authorMailSubject}
+			}
+			siteadmin {
+
+				sendMailToAdmin = {$plugin.tx_newscomment_newscomment.settings.notification.siteadmin.sendMailToAdmin}
+
+				adminEmail = {$plugin.tx_newscomment_newscomment.settings.notification.siteadmin.adminEmail}
+
+				adminMailSubject = {$plugin.tx_newscomment_newscomment.settings.notification.siteadmin.adminMailSubject}
+			}
+		}
+	}
+}
+
+module.tx_newscomment {
+	
+
+	view {
+		templateRootPaths.0 = {$module.tx_newscomment.view.templateRootPath}
+		partialRootPaths.0 = {$module.tx_newscomment.view.partialRootPath}
+		layoutRootPaths.0 = {$module.tx_newscomment.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$module.tx_newscomment.persistence.storagePid}
+	}
+	#settings < plugin.tx_newscomment_newscomment.settings
+	settings{
+		notification {
+			siteadmin {
+				adminEmail = {$plugin.tx_newscomment_newscomment.settings.notification.siteadmin.adminEmail}
+			}
+		}
+	}
+}
+
+plugin.tx_newscomment._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-news-comment table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-news-comment table th {
+		font-weight:bold;
+	}
+
+	.tx-news-comment table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)

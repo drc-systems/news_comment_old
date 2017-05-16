@@ -1,0 +1,101 @@
+
+plugin.tx_newscomment_newscomment {
+	view {
+		# cat=plugin.tx_newscomment_newscomment/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:news_comment/Resources/Private/Templates/
+		# cat=plugin.tx_newscomment_newscomment/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:news_comment/Resources/Private/Partials/
+		# cat=plugin.tx_newscomment_newscomment/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:news_comment/Resources/Private/Layouts/
+	}
+	
+	settings {
+
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Require comment approval or not
+		requireCommentApproval = 0
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=JQuery validations require or not
+		addJsValidations = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Show Pagination while listing of comments
+		showPagination = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Set Records per page for the comment listing 
+		recordPerPage = 10
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Show Comment search on comment listing page
+		showSearch = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Show Sort by drop down on comment listing page
+		showSortBy = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Rating option is availabe on Front end side for the comment
+		enableRating = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Allows to rate the comment only after login
+		enableRatingAtLogin = 0
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Shows total rating for the comment
+		showTotalRatings = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Bad word filtering text
+		badwordFilterString = 
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Date format
+		dateformat = F j, Y, g:i a
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Enable reply of comments
+		enableReplyToComment = 1
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Crop Comment Descripton from the specified no of characters
+		limitsDescriptionLength = 0
+
+		# cat=plugin.tx_newscomment_newscomment//a; type=int; label=Enable Website field
+		enableWebsiteField = 1
+
+		notification {
+			# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Set sender email address
+			senderEmail = test@test.com
+
+			# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Set sender name
+			senderName = SenderName
+
+			newsauthor {
+				# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Send mail notifation to author of the news
+				sendMailToNewsAuthor = 0
+
+				# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Set subject of mail sending to author
+				authorMailSubject = New Comment has been added to news
+			}
+			siteadmin {
+				# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Send mail notifation to site Admin
+				sendMailToAdmin = 0
+
+				# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Set admin email address
+				adminEmail = test@test.com
+
+
+				# cat=plugin.tx_newscomment_newscomment//a; type=string; label=Set subject of mail sending to admin
+				adminMailSubject = New Comment has been added to news
+			}
+		}
+	}
+}
+
+
+module.tx_newscomment{
+    #settings < plugin.tx_newscomment_newscomment.settings
+    persistence < plugin.tx_newscomment_newscomment.persistence
+    view < plugin.tx_newscomment_newscomment.view
+    view {
+        templateRootPath = EXT:news_comment/Resources/Private/Backend/Templates/
+        partialRootPath = EXT:news_comment/Resources/Private/Partials/
+        layoutRootPath = EXT:news_comment/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+		# cat=module.news_comment//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	
+}

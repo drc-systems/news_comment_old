@@ -1,0 +1,32 @@
+.row-actions{/*display: none;*/}
+.row-actions span{float: left; padding: 2px;}
+.comments-approve{color: green;}
+.comments-unapprove{color: orange;}
+.comments-normal{color: cornflowerblue;}
+.comments-danger{color: red;}
+.order-link{color: steelblue;text-decoration: none;}
+.form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 6px;
+}
+.count-no-comments {
+    background-color: #8e9398;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 11px;
+    height: 2em;
+    line-height: 21px;
+    min-width: 24px;
+    padding: 0 8px;
+    text-align: center;
+    width: 33px;
+}
+.count-no-comments a{ color: #ffffff !important;}
+.arrow-icon{display: none;}
+a.order-link:hover{text-decoration: none;}
+a.order-link:hover .arrow-icon {
+    display: inline !important;
+}
+.navbar-brand {padding: 0px;}

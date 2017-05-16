@@ -1,0 +1,254 @@
+{namespace m=DRCSystems\NewsComment\ViewHelpers}
+{namespace c=DRCSystems\NewsComment\ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+<link rel="stylesheet" href="{f:uri.resource(path:'Css/backmod.css')}" />
+<script src="{f:uri.resource(path:'jquery/jquery-2.2.3.min.js')}"></script>
+<script src="{f:uri.resource(path:'Js/backmod.js')}"></script>
+
+<h1><f:translate key='tx_newscomment_domain_model_comment.lblcomments' /></h1>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><f:image width="65"  src="{f:uri.resource(path:'images/comment-icon.jpg')}" /></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="{f:if(condition:'{params.type} == 1', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:1}}" ><f:translate key='tx_newscomment_domain_model_comment.lblall' />({commentsCounts.total}) <span class="sr-only">(current)</span></f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 2', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:2}}" ><f:translate key='tx_newscomment_domain_model_comment.lblpending' />({commentsCounts.pending})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 3', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:3}}" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' />({commentsCounts.approved})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 4', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:4}}" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' />({commentsCounts.spam})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 5', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:5}}" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' />({commentsCounts.trash})</f:link.action></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"> <f:count subject="{comments}" /> <f:translate key='tx_newscomment_domain_model_comment.lblcommentss' /></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<f:form action="searchcomments"  name="filter" addQueryString="1" class="form-inline" >
+    <div class="form-group">
+        <f:form.select class="form-control" id="moveto" name="moveto"  optionValueField="id" value="{params.moveto}" prependOptionLabel="<f:translate key='tx_newscomment_domain_model_comment.selectactions.0' />"  options="{actionlistCombo}"  />
+    </div>
+
+    <div class="form-group">
+      <f:form.textfield value="{params.searchterm}" class="form-control" id="searchterm" name="searchterm" placeholder='<f:translate key="tx_newscomment_domain_model_comment.searchstring" />'/>
+    </div>
+
+    <button type="submit" class="btn btn-default"><f:translate key="tx_newscomment_domain_model_comment.submit" /></button>
+
+    <table class="table table-striped">
+        <tr>
+            <td colspan="5">
+                <m:Paginate objects="{comments}" as="allcomments" configuration="{itemsPerPage: 10, insertAbove: 1, insertBelow: 1}">
+            </td>
+        </tr>
+        <tr>
+            <th><input type="checkbox" id="selectall"></th>
+            <th>
+                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'user',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.user" /> <span class="{f:if(condition:'{params.sort} != "user"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')} </span> </f:link.action>
+            </th>
+            <th>
+                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'comment',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.lblcomments" /> <span class="{f:if(condition:'{params.sort} != "comment"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
+            </th>
+            <th>News</th>
+            <th>
+                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'date',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.date" /> <span class="{f:if(condition:'{params.sort} != "date"', then:'arrow-icon')}" >{f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
+            </th>
+        </tr>
+        <f:for each="{allcomments}" as="comment">
+            <tr>
+                <td><f:form.checkbox value="1" class="chk-comments" name="chkmass_{comment.uid}" /></td>
+                <td>
+                    <f:if condition="{comment.user.image}">
+                        <f:then>
+                            <f:image src="fileadmin/user_upload/{comment.user.image}" width="32"/>
+                        </f:then>
+                        <f:else>
+                             <img src="{f:uri.resource(path:'images/noavatar.png')}">
+                        </f:else>
+                    </f:if>
+                    <span class="comment-username_{comment.uid}">{comment.username}</span><br>
+                    <a href="{comment.website}" target="_blank" class="comment-website_{comment.uid}">
+                        {comment.website}</a><br>
+                    <a href="mailto:{comment.usermail}" class="comment-usermail_{comment.uid}">{comment.usermail}</a><br>
+                    {comment.ipaddress}
+                </td>
+                <td>
+                    <div>
+                        <f:format.raw><f:format.crop maxCharacters="50" append="[<a href='javascript:void(0);' class='viewmore'>...<f:translate key='tx_newscomment_domain_model_comment.viewmore' /></a>]">{comment.description}</f:format.crop></f:format.raw>
+                    </div>
+
+                    <div style="display:none;" class="comment-description_{comment.uid}">
+                        <f:format.nl2br><f:format.raw>{comment.description}&nbsp;</f:format.raw></f:format.nl2br>
+                    </div>
+                    <div style="display:none;">
+                        <a href='javascript:void(0);' class='hidethis comments-normal'>[<f:translate key='tx_newscomment_domain_model_comment.hide' />]</a>
+                    </div>
+                    <div class="row-actions">
+                        <f:if condition="{comment.hidden}">
+                            <f:then>
+                                
+                                    <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.approveTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                                        <f:link.action action="searchcomments" arguments="{moveto:2,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' /></f:link.action>
+                                    </span>
+                                
+                            </f:then>
+                            <f:else>
+                                    <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.unapproveTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                                        <f:link.action action="searchcomments" arguments="{moveto:1,commentId:comment.uid}" class="comments-unapprove" ><f:translate key='tx_newscomment_domain_model_comment.lblunapprove' /></f:link.action>
+                                    </span>
+                            </f:else>
+                        </f:if>
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.replyTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:if condition="{comment.isNewsHiddenOrDeleted}">
+                                <f:then></f:then>
+                                <f:else>
+                                    <a href="#"  class="comments-normal comment-reply-button" newsvalue="{comment.newsuid}" btnvalue="{comment.uid}" ><f:translate key='tx_newscomment_domain_model_comment.lblreply' /></a>
+                                </f:else>
+                            </f:if>
+                        </span>
+                       
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.quickeditTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:if condition="{comment.isNewsHiddenOrDeleted}">
+                                <f:then></f:then>
+                                <f:else>
+                                   <a href="#"  class="comments-normal comment-quick-edit-button" newsvalue="{comment.newsuid}" btnvalue="{comment.uid}" ><f:translate key='tx_newscomment_domain_model_comment.lbledit' /></a> 
+                                </f:else>
+                            </f:if>
+                        </span>
+                        
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.spamTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:link.action action="searchcomments" arguments="{moveto:3,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' /></f:link.action>
+                        </span>
+                        
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.trashTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:link.action action="searchcomments" arguments="{moveto:4,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' /></f:link.action>
+                        </span>
+
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.restoreTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:link.action action="searchcomments" arguments="{moveto:7,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblrestore' /></f:link.action>
+                        </span>
+
+                        <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.notspamTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
+                            <f:link.action action="searchcomments" arguments="{moveto:5,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblnotspam' /></f:link.action>
+                        </span>
+
+                        <div class="comment-form-reply_{comment.uid}"></div>
+
+                        <div class="comment-form-quick-edit_{comment.uid}"></div>
+                    </div>
+                </td>
+                <td>
+                    <strong><f:format.crop maxCharacters="20">{comment.newstitle}</f:format.crop></strong>
+                    
+                    <f:if condition="{comment.posturl}">
+                        <f:then>
+                            <br><a target="_blank" href="{comment.posturl}"><f:translate key='tx_newscomment_domain_model_comment.lblviewpost' /></a>
+                        </f:then>
+                    </f:if>
+
+                    <br><f:link.action action="searchcomments" arguments="{newsId:comment.newsuid}" ><span class="count-no-comments">{comment.totalcomments}</span></f:link.action>
+                </td>
+                <td>
+                    <f:format.date format="F j, Y, g:i a">{comment.crdate}</f:format.date>
+                </td>
+            </tr>
+        </f:for>
+        <tr>
+            <td colspan="5">
+                </m:Paginate>
+            </td>
+        </tr>
+    </table>
+</f:form>
+
+<div id="form-reply-view" class="active-comment-form" style="display:none;">
+    <f:form action="reply"  name="replyComment" object="replyComment" addQueryString="1" class="form-inline">
+        <div class="form-group">
+            <f:form.textarea property="description" id="comment-description" placeholder="<f:translate key='tx_newscomment_domain_model_comment.lblwritenewcomments' />*" cols="60" rows="1"  class="replyvalidatethis form-control" />
+        </div>
+        <div class="form-group"><f:form.button id="comment-form-close-btn" class="btn btn-primary pull-right btn-xs" ><f:translate key='tx_newscomment_domain_model_comment.cancle' /></f:form.button></div>
+        <div class="form-group">
+
+            <f:form.hidden property="newsuid" id="newsuid" value=""/>
+            <f:form.hidden name="parentId" id="parentId" value=""/>
+            <f:form.hidden name="pageid" id="pageid" value="{pageid}"/>
+            <f:form.submit id="replyCommentSubmit" value="Reply" class="btn btn-primary pull-right btn-xs"  />
+        </div>
+    </f:form>
+</div>
+
+
+<div id="form-quick-edit" class="active-comment-quick-edit" style="display:none;">
+    <f:form action="update"  name="comment" object="comment" addQueryString="1" class="" >
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <f:form.textarea property="description"  placeholder="<f:translate key='tx_newscomment_domain_model_comment.lblwritenewcomments' />*" cols="80" rows="4" id="quick-edit-description"  class="validatethis form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <f:form.textfield property="username" id="quick-edit-username" placeholder="<f:translate key='tx_newscomment_domain_model_comment.username' />*"  class="validatethis form-control"  />
+                </div>
+            </div>
+        
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <f:form.textfield property="usermail" placeholder="<f:translate key='tx_newscomment_domain_model_comment.usermail' />*" type="email" id="quick-edit-usermail" class="validatethis form-control"  />
+                </div>
+            </div>
+       
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <f:form.textfield property="website" placeholder="<f:translate key='tx_newscomment_domain_model_comment.website' />*" id="quick-edit-website" class="form-control"  />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <div class="form-group">
+                    <f:form.button id="comment-quick-edit-close-btn" class="btn btn-primary pull-left btn-xs" ><f:translate key='tx_newscomment_domain_model_comment.cancle' /></f:form.button>
+                </div>
+            </div>
+            <div class="col-xs-1 pull-left">
+                <div class="form-group">
+                    <f:form.hidden property="newsuid" id="newsuid" value=""/>
+                    <f:form.hidden name="commentId" id="commentId" value=""/>
+                    <f:form.hidden name="pageid" id="pageid" value="{pageid}"/>
+                    <f:form.submit id="newsCommentSubmit" value="Edit" class="btn btn-primary pull-left btn-xs"  />
+                </div>
+            </div>
+            <div class="col-xs-10">&nbsp;</div>
+        </div>
+    </f:form>
+</div>
+
+</f:section>

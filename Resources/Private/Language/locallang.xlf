@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T16:18:28Z" product-name="news_comment">
+		<header/>
+		<body>
+			<trans-unit id="tx_newscomment_domain_model_comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.newsuid">
+				<source>Newsuid</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.parentcomment">
+				<source>Parentcomment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.username">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.usermail">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.usersession">
+				<source>Usersession</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.description">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.rate">
+				<source>Rate</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.rate">
+				<source>Rate</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.usersession">
+				<source>Usersession</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_rating.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_users">
+				<source>Users</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.comment_succ_msg">
+				<source>Your comment has been added Successfully.</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.comment_approval_msg">
+				<source>Your comment has been added.Your Comment Will Be Visible After Approval.</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.require_field_msg">
+				<source>Please fill out the required fields.</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.valid_email_msg">
+				<source>Please enter valid email address.</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.thanksrating_msg">
+				<source>Thanks for the Rating!</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectorderby.1">
+				<source>Newest first</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectorderby.2">
+				<source>Oldest first</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectorderby.3">
+				<source>Highest Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectorderby.4">
+				<source>Lowest Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.searchstring">
+				<source>Search Term</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.search">
+				<source>Search</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.pleaselogin_msg">
+				<source>Please login to rate this comment!</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.notallowrating_msg">
+				<source>You may not allow rating multiple times!</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.newcommentmailsubject">
+				<source>New Comment has been added to news</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.newcommentmailmsg">
+				<source>Following comment has been added to news posted by you.</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.newcommentmailmsgtoadmin">
+				<source>Following comment has been added.</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.nocommentsfound_msg">
+				<source>There are no comments.</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.badwordfound_msg">
+				<source>Your comment may contain badword.</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.totalopinion">
+				<source>Total User Opinions</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.lblwritenewcomments">
+				<source>Join the Discussion...</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.lblcomments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblvotes">
+				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblreply">
+				<source>Reply</source>
+			</trans-unit>
+
+			<trans-unit id="pagination_previous">
+				<source>Prev</source>
+			</trans-unit>
+			<trans-unit id="paginationfirst">
+				<source>First</source>
+			</trans-unit>
+			<trans-unit id="paginationlast">
+				<source>Last</source>
+			</trans-unit>
+			<trans-unit id="pagination_next">
+				<source>Next</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.0">
+				<source>Actions</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.1">
+				<source>Un Approve</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.2">
+				<source>Approve</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.3">
+				<source>Mark as Spam</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.4">
+				<source>Move to Trash</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.5">
+				<source>Not Spam</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.6">
+				<source>Delete Permenently</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.selectactions.7">
+				<source>Restore</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.lblall">
+				<source>All</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblpending">
+				<source>Pending</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblapprove">
+				<source>Approve</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblunapprove">
+				<source>Un Approve</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblspam">
+				<source>Spam</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lbltrash">
+				<source>Trash</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_newscomment_domain_model_comment.lbledit">
+				<source>Quick Edit</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblrestore">
+				<source>Restore</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblviewpost">
+				<source>View Post</source>
+			</trans-unit>
+
+			<trans-unit id="tx_newscomment_domain_model_comment.lblcommentss">
+				<source>Comment(s)</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.submit">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.viewmore">
+				<source>View More</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.hide">
+				<source>Hide</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.cancle">
+				<source>Cancle</source>
+			</trans-unit>
+			<trans-unit id="tx_newscomment_domain_model_comment.lblnotspam">
+				<source>Not Spam</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

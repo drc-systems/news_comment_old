@@ -1,0 +1,53 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Listing for Comment</h1>
+
+<f:flashMessages />
+
+<table  class="tx_newscomment" >
+	<tr>
+		<th><f:translate key="tx_newscomment_domain_model_comment.newsuid" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.username" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.usermail" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.usersession" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.description" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.rate" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.ipaddress" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.spam" /></th>
+		<th><f:translate key="tx_newscomment_domain_model_comment.website" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{comments}" as="comment">
+		<tr>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.newsuid}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.username}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.usermail}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.usersession}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.description}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.rate}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.ipaddress}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.spam}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{comment : comment}"> {comment.website}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{comment : comment}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{comment : comment}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New Comment</f:link.action>
+</f:section>

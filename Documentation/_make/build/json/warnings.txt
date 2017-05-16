@@ -1,0 +1,10 @@
+/var/www/html/extdev/fileadmin/news/Screenshots.rst:29: WARNING: Title underline too short.
+
+Frontend View of News Comment Screen - II
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/extdev/fileadmin/news/Screenshots.rst:29: WARNING: Title underline too short.
+
+Frontend View of News Comment Screen - II
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/extdev/fileadmin/news/Localization.de_DE.tmpl/Index.rst:: WARNING: document isn't included in any toctree
+/var/www/html/extdev/fileadmin/news/Localization.fr_FR.tmpl/Index.rst:: WARNING: document isn't included in any toctree
