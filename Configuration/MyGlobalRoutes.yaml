@@ -1,0 +1,8 @@
+-
+  uriPattern: 'news-comment/Comment/create/'
+  defaults:
+    '@package':    'DRCSystems.news_comment'
+    '@plugin':     'Newscomment'
+    '@controller': 'Comment'
+    '@action':     'create'
+  httpMethods: ['POST', 'PUT']

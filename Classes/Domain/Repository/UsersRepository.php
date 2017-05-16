@@ -31,6 +31,5 @@ namespace DRCSystems\NewsComment\Domain\Repository;
  */
 class UsersRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
     
 }

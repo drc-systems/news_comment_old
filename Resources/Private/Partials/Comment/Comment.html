@@ -29,13 +29,12 @@
 				<div  class="col-md-12">
 					<f:if condition="{settings.limitsDescriptionLength}">
 						<f:then>
+							<div><f:format.html><f:format.crop maxCharacters="{settings.limitsDescriptionLength}" append="[<a href='javascript:void(0);' class='viewmore'>...View More</a>]">{comment.description}</f:format.crop></f:format.html></div>
 
-							<div><f:format.raw><f:format.crop maxCharacters="{settings.limitsDescriptionLength}" append="[<a href='javascript:void(0);' class='viewmore'>...View More</a>]">{comment.description}</f:format.crop></f:format.raw></div>
-
-							<div style="display:none;"> <f:format.nl2br><f:format.raw>{comment.description}&nbsp;[<a href='javascript:void(0);' class='hidethis' >Hide</a>]</f:format.raw></f:format.nl2br><br></div>
+							<div style="display:none;"> <f:format.nl2br><f:format.html>{comment.description}&nbsp;[<a href='javascript:void(0);' class='hidethis' >Hide</a>]</f:format.html></f:format.nl2br><br></div>
 						</f:then>
 						<f:else>
-							<f:format.nl2br><f:format.raw>{comment.description}</f:format.raw></f:format.nl2br><br>
+							<f:format.nl2br><f:format.html>{comment.description}</f:format.html></f:format.nl2br><br>
 						</f:else>
 					</f:if>
 				</div>		

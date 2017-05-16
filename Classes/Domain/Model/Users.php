@@ -31,6 +31,5 @@ namespace DRCSystems\NewsComment\Domain\Model;
  */
 class Users extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 {
-
     
 }

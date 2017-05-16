@@ -99,11 +99,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 </td>
                 <td>
                     <div>
-                        <f:format.raw><f:format.crop maxCharacters="50" append="[<a href='javascript:void(0);' class='viewmore'>...<f:translate key='tx_newscomment_domain_model_comment.viewmore' /></a>]">{comment.description}</f:format.crop></f:format.raw>
+                        <f:format.html><f:format.crop maxCharacters="50" append="[<a href='javascript:void(0);' class='viewmore'>...<f:translate key='tx_newscomment_domain_model_comment.viewmore' /></a>]">{comment.description}</f:format.crop></f:format.html>
                     </div>
 
                     <div style="display:none;" class="comment-description_{comment.uid}">
-                        <f:format.nl2br><f:format.raw>{comment.description}&nbsp;</f:format.raw></f:format.nl2br>
+                        <f:format.nl2br><f:format.html>{comment.description}&nbsp;</f:format.html></f:format.nl2br>
                     </div>
                     <div style="display:none;">
                         <a href='javascript:void(0);' class='hidethis comments-normal'>[<f:translate key='tx_newscomment_domain_model_comment.hide' />]</a>

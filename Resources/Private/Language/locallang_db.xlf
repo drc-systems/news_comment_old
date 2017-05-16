@@ -3,49 +3,49 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-15T16:18:28Z" product-name="news_comment">
 		<header/>
 		<body>
-			<trans-unit id="tx_newscomment_domain_model_comment">
+			<trans-unit id="comment">
 				<source>Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.newsuid">
+			<trans-unit id="comment.newsuid">
 				<source>Newsuid</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.parentcomment">
+			<trans-unit id="comment.parentcomment">
 				<source>Reply Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.username">
+			<trans-unit id="comment.username">
 				<source>User Name</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.usermail">
+			<trans-unit id="comment.usermail">
 				<source>User Email</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.usersession">
+			<trans-unit id="comment.usersession">
 				<source>User SessionId</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.description">
+			<trans-unit id="comment.description">
 				<source>Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.rate">
+			<trans-unit id="comment.rate">
 				<source>Average Rating</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.user">
+			<trans-unit id="comment.user">
 				<source>User</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.rating">
+			<trans-unit id="comment.rating">
 				<source>Rating</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_rating">
+			<trans-unit id="rating">
 				<source>Rating</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_rating.rate">
+			<trans-unit id="rating.rate">
 				<source>Rate</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_rating.usersession">
+			<trans-unit id="rating.usersession">
 				<source>User SessionId</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_rating.user">
+			<trans-unit id="rating.user">
 				<source>User</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_rating.crdate">
+			<trans-unit id="comment.crdate">
 				<source>Created Date</source>
 			</trans-unit>
 			<trans-unit id="tx_newscomment_domain_model_rating.hidden">
@@ -57,13 +57,13 @@
 			<trans-unit id="fe_users.tx_extbase_type.Tx_NewsComment_Users">
 				<source>News Comment Users</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.website">
+			<trans-unit id="comment.website">
 				<source>Website</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.ipaddress">
+			<trans-unit id="comment.ipaddress">
 				<source>IP Address</source>
 			</trans-unit>
-			<trans-unit id="tx_newscomment_domain_model_comment.spam">
+			<trans-unit id="comment.spam">
 				<source>Is Spam</source>
 			</trans-unit>
 		</body>

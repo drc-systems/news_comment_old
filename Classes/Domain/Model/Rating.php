@@ -79,7 +79,6 @@ class Rating extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        
     }
     
     /**
@@ -165,5 +164,4 @@ class Rating extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->comment = $comment;
     }
-
 }

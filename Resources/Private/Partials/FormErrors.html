@@ -1,12 +1,9 @@
 
 <f:form.validationResults for="{object}">
 	<f:if condition="{validationResults.flattenedErrors}">
-		
 		<f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
-			<div >
-			
+			<div>
 				<f:for each="{errors}" as="error"><h4 class="alert alert-danger" role="alert"><f:image src="typo3conf/ext/news_comment/Resources/Public/images/alert_icon.png" width="30" />&nbsp; {error}</h4></li></f:for>
-				
 			</div>
 		</f:for>
 </f:if>

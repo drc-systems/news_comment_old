@@ -74,3 +74,74 @@ Files are located at ``Resources/Public/jquery``
 			version = jquery-2.2.3.min.js
 			}
 	}
+
+Realurl Settings
+----------------
+
+This is just sample code you can use for real url settings of the extensions news and news_comment
+
+.. code-block:: text
+
+//News Detail Page
+'fixedPostVars' => array(
+	'22'=> array(
+			array(
+					'GETvar' => 'tx_news_pi1[controller]',
+					'noMatch' => 'bypass',
+			),
+			array(
+					'GETvar' => 'tx_news_pi1[action]',
+					'noMatch' => 'bypass',
+			),
+			array(
+					'GETvar' => 'tx_news_pi1[news]',
+					'lookUpTable' => array(
+							'table' => 'tx_news_domain_model_news',
+							'id_field' => 'uid',
+							'alias_field' => 'title',
+							'addWhereClause' => ' AND deleted !=1 AND hidden !=1',
+							'enable404forInvalidAlias' => 1,
+							'useUniqueCache' => 1,
+							'useUniqueCache_conf' => array(
+									'strtolower' => 1,
+									'spaceCharacter' => '-',
+							),
+					),
+			),
+			//cHash
+			array(
+					'GETvar' => 'cHash',
+					'noMatch' => 'bypass',
+			),                 
+	),
+),
+
+//news_comment extension
+'postVarSets' => array(
+	'_DEFAULT' => array(
+			//News Comments
+			'news-comment' => array(
+					array(
+							'GETvar' => 'tx_newscomment_newscomment[controller]',
+					),
+					array(
+							'GETvar' => 'tx_newscomment_newscomment[action]',
+					),
+			),
+			'searchterm' => array(
+					array(
+							'GETvar' => 'filter[searchterm]',
+					),
+			),
+			'sort' => array(
+					array(
+							'GETvar' => 'filter[sort]',
+					),
+			),
+			'page' => array(
+					array(
+							'GETvar' => 'tx_newscomment_newscomment[@widget_0][currentPage]',
+					),
+			),
+	),
+),

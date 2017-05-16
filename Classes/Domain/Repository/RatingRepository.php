@@ -38,7 +38,7 @@ class RatingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function countRatingComment($commentID)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->equals('comment', $commentID))->count();
         $queryresult = $query->execute();
         $total_rates = 0;
@@ -63,20 +63,19 @@ class RatingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function getRatingBySession($sessionID)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->equals('usersession', $sessionID));
         $result = $query->execute();
         return $result;
     }
 
 
-    public function getRatedUser($userId,$commentId)
+    public function getRatedUser($userId, $commentId)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->matching($query->equals('user', $userId),$query->equals('comment', $commentId));
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->matching($query->equals('user', $userId), $query->equals('comment', $commentId));
         $result = $query->execute();
         return $result;
     }
-
 }

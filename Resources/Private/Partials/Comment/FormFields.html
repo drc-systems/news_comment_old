@@ -3,11 +3,11 @@
 	<div class="row">
 		
 		<div class="col-md-12">
-			<f:form action="create"  name="newComment" class="form-comment" object="{newComment}" addQueryString="1" >
+			<f:form action="create" name="newComment" class="form-comment" object="{newComment}" addQueryString="1" >
 				
 					<div class="pull-right"><f:image class="comment-form-close-btn" style="display:none;" id="comment-form-close-btn" src="typo3conf/ext/news_comment/Resources/Public/images/fx3_close.jpg"/></div>
 					<div class="form-group">
-						<f:form.textarea property="description" id="comment-description" placeholder="<f:translate key='tx_newscomment_domain_model_comment.lblwritenewcomments' />*" cols="60" rows="1"  class="validatethis form-control" />
+						<f:form.textarea property="description" id="comment-description" placeholder="<f:translate key='tx_newscomment_domain_model_comment.lblwritenewcomments' />*" cols="60" rows="4"  class="validatethis form-control" />
 					</div>
 				
 					<f:if condition="{currentuser.username}">
@@ -16,7 +16,7 @@
 						</f:then>
 						<f:else>
 							<div class="form-group">
-								<f:form.textfield property="username" id="comment-username" placeholder="<f:translate key='tx_newscomment_domain_model_comment.username' />*"  class="validatethis form-control" style="display:none;" />
+								<f:form.textfield property="username" id="comment-username" placeholder="<f:translate key='tx_newscomment_domain_model_comment.username' />*"  class="validatethis form-control" />
 							</div>
 						</f:else>
 					</f:if>
@@ -27,7 +27,7 @@
 						</f:then>
 						<f:else>
 							<div class="form-group">
-								<f:form.textfield property="usermail" placeholder="<f:translate key='tx_newscomment_domain_model_comment.usermail' />*" type="email" id="usermail" class="validatethis form-control" style="display:none;" />
+								<f:form.textfield property="usermail" placeholder="<f:translate key='tx_newscomment_domain_model_comment.usermail' />*" type="email" id="usermail" class="validatethis form-control" />
 							</div>
 						</f:else>
 					</f:if>
@@ -35,7 +35,7 @@
 					<f:if condition="{settings.enableWebsiteField}">
 						<f:then>
 							<div class="form-group">
-								<f:form.textfield property="website" placeholder="<f:translate key='tx_newscomment_domain_model_comment.website' />" id="website" class="form-control" style="display:none;" />
+								<f:form.textfield property="website" placeholder="<f:translate key='tx_newscomment_domain_model_comment.website' />" id="website" class="form-control" />
 							</div>
 						</f:then>
 					</f:if>
@@ -44,7 +44,7 @@
 						<f:form.hidden property="newsuid" value="{newsID}"/>
 						<f:form.hidden name="parentId" id="parentId" value=""/>
 						<f:form.hidden property="pageid" id="pageid" value="{pageid}"/>
-						<f:form.submit id="newsCommentSubmit" value="Submit" class="btn btn-primary pull-right btn-xs" style="display:none;" />
+						<f:form.submit id="newsCommentSubmit" value="Submit" class="btn btn-primary pull-right btn-xs" />
 					</div>
 			</f:form>
 		</div>

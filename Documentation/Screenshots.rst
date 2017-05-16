@@ -18,6 +18,14 @@ Backend View of News Comment Screen - II
 	:width: 1100px
 	:alt: Backend view
 
+Backend Module of News Comment Screen - III
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. figure:: Images/BackendModule.png
+	:width: 1100px
+	:alt: Backend Module
+
 Frontend View of News Comment Screen - I
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

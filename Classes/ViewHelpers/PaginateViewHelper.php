@@ -31,40 +31,41 @@ namespace DRCSystems\NewsComment\ViewHelpers;
  * use arrays with paginate, not only query results.
  *
  * @author     Paul Beck <pb@teamgeist-medien.de>
- * @author	   Armin Ruediger Vieweg <info@professorweb.de>
+ * @author     Armin Ruediger Vieweg <info@professorweb.de>
  * @copyright  2011 Copyright belongs to the respective authors
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 
-class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper {
+class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper
+{
 
-	/**
-	 * @var \DRCSystems\NewsComment\Controller\PaginateController
-	 */
-	protected $controller;
+    /**
+     * @var \DRCSystems\NewsComment\Controller\PaginateController
+     */
+    protected $controller;
 
-	/**
-	 * Injection of widget controller
-	 * 
-	 * @param \DRCSystems\NewsComment\Controller\PaginateController $controller
-	 * @return void
-	 */
-	public function injectController(\DRCSystems\NewsComment\Controller\PaginateController $controller) {
-		$this->controller = $controller;
-	}
+    /**
+     * Injection of widget controller
+     *
+     * @param \DRCSystems\NewsComment\Controller\PaginateController $controller
+     * @return void
+     */
+    public function injectController(\DRCSystems\NewsComment\Controller\PaginateController $controller)
+    {
+        $this->controller = $controller;
+    }
 
-	/**
-	 * The render method of widget
-	 *
-	 * @param mixed $objects \TYPO3\CMS\ExtBase\Persistence\QueryResultInterface,
-	 *        \TYPO3\CMS\ExtBase\Persistence\ObjectStorage object or array
-	 * @param string $as
-	 * @param array $configuration
-	 * @return string
-	 */
-	public function render($objects, $as, array $configuration = array('itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE)) {
-		return $this->initiateSubRequest();
-	}
+    /**
+     * The render method of widget
+     *
+     * @param mixed $objects \TYPO3\CMS\ExtBase\Persistence\QueryResultInterface,
+     *        \TYPO3\CMS\ExtBase\Persistence\ObjectStorage object or array
+     * @param string $as
+     * @param array $configuration
+     * @return string
+     */
+    public function render($objects, $as, array $configuration = array('itemsPerPage' => 10, 'insertAbove' => false, 'insertBelow' => true))
+    {
+        return $this->initiateSubRequest();
+    }
 }
-
-?>
