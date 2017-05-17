@@ -23,7 +23,6 @@ if (TYPO3_MODE === 'BE') {
         array(
             'Comment' => 'listComments, searchComments, reply,
             new, create, update, delete',
-            'Rating' => 'list, new, create, update, delete',
         ),
         array(
             'access' => 'user,group',
