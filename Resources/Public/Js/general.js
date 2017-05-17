@@ -119,11 +119,6 @@ function submitRating(rate,commentid)
         data: {
             eID: "Newscommentajax",
             id:pageId,
-            tx_newscomment_newscomment: {
-                pluginName:  'Newscomment',
-                controller:  'Comment',
-                action:      'addrating',
-            },
             param:{
                 rate:rate,
                 commentid:commentid,
@@ -138,9 +133,9 @@ function submitRating(rate,commentid)
                 }, 100);
                 setTimeout(function () {
                     $("#ad-success").fadeOut("slow");
-                }, 500);
+                }, 1500);
                 setTimeout(function () {
-                    location.reload();
+                    //location.reload();
                 }, 2000);
             }
         }

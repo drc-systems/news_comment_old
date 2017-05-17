@@ -26,21 +26,27 @@ namespace DRCSystems\NewsComment\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /**
  * The repository for Comments
  */
 class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+    const SORT_ORDER_ASC = 'asc';
+    const SORT_ORDER_DESC = 'desc';
 
     protected $defaultOrderings = array(
         'crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     );
     
     /**
-     * Userid
+     * Get Comments By News
      *
-     * @param $newsId
-     * @param $filter
+     * @param int $newsId $newsId
+     * @param array $filter filter
+     *
+     * @return mixed
      */
     public function getCommentsByNews($newsId, $filter = array())
     {
@@ -53,11 +59,13 @@ class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->equals('spam', 0),
         );
         if ($filter['searchterm'] != '') {
+            $filter['searchterm'] = filter_var(trim($filter['searchterm']), FILTER_SANITIZE_STRING);
             array_push($queryArr, $query->like('description', '%' . $filter['searchterm'] . '%'));
         }
+
         $query->matching($query->logicalAnd($queryArr));
         if ($filter['sort'] != '') {
-            $sort = $filter['sort'];
+            $sort = intval($filter['sort']);
         }
         if ($sort == 1) {
             $query->setOrderings(array('crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));
@@ -83,20 +91,21 @@ class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
 
     /**
-     * Userid
+     * Get Backend Comments
      *
-     * @param $newsId
-     * @param $filter
+     * @param array $filter filter
+     * @param bool $isCount isCount
+     *
+     * @return mixed
      */
-    public function getBackendComments($filter = array(), $isCount = 0)
+    public function getBackendComments($filter = array(), $isCount = false)
     {
-        
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(true);
         $queryArr = array();
         
-        if ($filter['type']) {
+        if (intval($filter['type'])) {
             switch ($filter['type']) {
                 case 1:
                     array_push($queryArr, $query->equals('deleted', 0));
@@ -128,37 +137,38 @@ class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         if ($filter['searchterm'] != '') {
+            $filter['searchterm'] = filter_var(trim($filter['searchterm']), FILTER_SANITIZE_STRING);
             array_push($queryArr, $query->like('description', '%' . $filter['searchterm'] . '%'));
         }
 
         if ($filter['newsId'] != '') {
-            array_push($queryArr, $query->equals('newsuid', $filter['newsId']));
+            array_push($queryArr, $query->equals('newsuid', intval($filter['newsId'])));
         }
 
         $query->matching($query->logicalAnd($queryArr));
         if ($filter['sort'] != '') {
-            $sort = $filter['sort'];
-            $order = $filter['order'];
+            $sort = filter_var(trim($filter['sort']), FILTER_SANITIZE_STRING);
+            $order = filter_var(trim($filter['order']), FILTER_SANITIZE_STRING);
         }
-        if ($sort == 'date' && $order=='desc') {
+        if ($sort == 'date' && $order == self::SORT_ORDER_DESC) {
             $query->setOrderings(array('crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));
-        } elseif ($sort == 'date' && $order=='asc') {
+        } elseif ($sort == 'date' && $order == self::SORT_ORDER_ASC) {
             $query->setOrderings(array('crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
-        } elseif ($sort == 'user' && $order=='desc') {
+        } elseif ($sort == 'user' && $order == self::SORT_ORDER_DESC) {
             $query->setOrderings(array('username' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));
-        } elseif ($sort == 'user' && $order=='asc') {
+        } elseif ($sort == 'user' && $order == self::SORT_ORDER_ASC) {
             $query->setOrderings(array('username' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
-        } elseif ($sort == 'comment' && $order=='desc') {
+        } elseif ($sort == 'comment' && $order == self::SORT_ORDER_DESC) {
             $query->setOrderings(
                 array('description' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING)
             );
-        } elseif ($sort == 'comment' && $order=='asc') {
+        } elseif ($sort == 'comment' && $order == self::SORT_ORDER_ASC) {
             $query->setOrderings(
                 array('description' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING)
             );
         }
 
-        if ($isCount == 1) {
+        if ($isCount) {
             return $query->count();
         } else {
             return $query->execute();
@@ -166,11 +176,13 @@ class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * Userid
+     * Get Comment By Id
      *
-     * @param $commentId
+     * @param int $commentId commentId
+     *
+     * @return mixed
      */
-    public function getByCommentid($commentId)
+    public function getCommentById($commentId)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(true);
@@ -181,16 +193,18 @@ class CommentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * Userid
+     * Get Comment By News
      *
-     * @param $commentId
+     * @param int $newsId newsId
+     *
+     * @return mixed
      */
-    public function getByNews($newsuid)
+    public function getCommentByNews($newsId)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(true);
         $query->getQuerySettings()->setRespectStoragePage(false);
-        $query->matching($query->equals('newsuid', $newsuid));
+        $query->matching($query->equals('newsuid', $newsId));
         $result = $query->execute();
         return $result;
     }

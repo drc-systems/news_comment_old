@@ -35,11 +35,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{f:if(condition:'{params.type} == 1', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:1}}" ><f:translate key='tx_newscomment_domain_model_comment.lblall' />({commentsCounts.total}) <span class="sr-only">(current)</span></f:link.action></li>
-                <li class="{f:if(condition:'{params.type} == 2', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:2}}" ><f:translate key='tx_newscomment_domain_model_comment.lblpending' />({commentsCounts.pending})</f:link.action></li>
-                <li class="{f:if(condition:'{params.type} == 3', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:3}}" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' />({commentsCounts.approved})</f:link.action></li>
-                <li class="{f:if(condition:'{params.type} == 4', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:4}}" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' />({commentsCounts.spam})</f:link.action></li>
-                <li class="{f:if(condition:'{params.type} == 5', then:'active')}"><f:link.action action="listcomments" arguments="{filter:{type:5}}" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' />({commentsCounts.trash})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 1', then:'active')}"><f:link.action action="listComments" arguments="{filter:{type:1}}" ><f:translate key='tx_newscomment_domain_model_comment.lblall' />({commentsCounts.total}) <span class="sr-only">(current)</span></f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 2', then:'active')}"><f:link.action action="listComments" arguments="{filter:{type:2}}" ><f:translate key='tx_newscomment_domain_model_comment.lblpending' />({commentsCounts.pending})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 3', then:'active')}"><f:link.action action="listComments" arguments="{filter:{type:3}}" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' />({commentsCounts.approved})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 4', then:'active')}"><f:link.action action="listComments" arguments="{filter:{type:4}}" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' />({commentsCounts.spam})</f:link.action></li>
+                <li class="{f:if(condition:'{params.type} == 5', then:'active')}"><f:link.action action="listComments" arguments="{filter:{type:5}}" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' />({commentsCounts.trash})</f:link.action></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
     </div>
 </nav>
 
-<f:form action="searchcomments"  name="filter" addQueryString="1" class="form-inline" >
+<f:form action="searchComments"  name="filter" addQueryString="1" class="form-inline" >
     <div class="form-group">
         <f:form.select class="form-control" id="moveto" name="moveto"  optionValueField="id" value="{params.moveto}" prependOptionLabel="<f:translate key='tx_newscomment_domain_model_comment.selectactions.0' />"  options="{actionlistCombo}"  />
     </div>
@@ -69,14 +69,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <tr>
             <th><input type="checkbox" id="selectall"></th>
             <th>
-                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'user',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.user" /> <span class="{f:if(condition:'{params.sort} != "user"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')} </span> </f:link.action>
+                <f:link.action action="searchComments" class="order-link" arguments="{sort:'user',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.user" /> <span class="{f:if(condition:'{params.sort} != "user"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')} </span> </f:link.action>
             </th>
             <th>
-                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'comment',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.lblcomments" /> <span class="{f:if(condition:'{params.sort} != "comment"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
+                <f:link.action action="searchComments" class="order-link" arguments="{sort:'comment',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.lblcomments" /> <span class="{f:if(condition:'{params.sort} != "comment"', then:'arrow-icon')}" > {f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
             </th>
             <th>News</th>
             <th>
-                <f:link.action action="searchcomments" class="order-link" arguments="{sort:'date',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.date" /> <span class="{f:if(condition:'{params.sort} != "date"', then:'arrow-icon')}" >{f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
+                <f:link.action action="searchComments" class="order-link" arguments="{sort:'date',order:params.order}" ><f:translate key="tx_newscomment_domain_model_comment.date" /> <span class="{f:if(condition:'{params.sort} != "date"', then:'arrow-icon')}" >{f:if(condition: '{params.order} == "desc"', then: '&#x25B2;', else: '&#x25BC;')}</span></f:link.action>
             </th>
         </tr>
         <f:for each="{allcomments}" as="comment">
@@ -113,13 +113,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
                             <f:then>
                                 
                                     <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.approveTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                                        <f:link.action action="searchcomments" arguments="{moveto:2,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' /></f:link.action>
+                                        <f:link.action action="searchComments" arguments="{moveto:2,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblapprove' /></f:link.action>
                                     </span>
                                 
                             </f:then>
                             <f:else>
                                     <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.unapproveTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                                        <f:link.action action="searchcomments" arguments="{moveto:1,commentId:comment.uid}" class="comments-unapprove" ><f:translate key='tx_newscomment_domain_model_comment.lblunapprove' /></f:link.action>
+                                        <f:link.action action="searchComments" arguments="{moveto:1,commentId:comment.uid}" class="comments-unapprove" ><f:translate key='tx_newscomment_domain_model_comment.lblunapprove' /></f:link.action>
                                     </span>
                             </f:else>
                         </f:if>
@@ -142,19 +142,19 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         </span>
                         
                         <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.spamTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                            <f:link.action action="searchcomments" arguments="{moveto:3,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' /></f:link.action>
+                            <f:link.action action="searchComments" arguments="{moveto:3,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lblspam' /></f:link.action>
                         </span>
                         
                         <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.trashTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                            <f:link.action action="searchcomments" arguments="{moveto:4,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' /></f:link.action>
+                            <f:link.action action="searchComments" arguments="{moveto:4,commentId:comment.uid}" class="comments-danger" ><f:translate key='tx_newscomment_domain_model_comment.lbltrash' /></f:link.action>
                         </span>
 
                         <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.restoreTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                            <f:link.action action="searchcomments" arguments="{moveto:7,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblrestore' /></f:link.action>
+                            <f:link.action action="searchComments" arguments="{moveto:7,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblrestore' /></f:link.action>
                         </span>
 
                         <span class="approve" style="display:{f:if(condition:'{c:inArray(subject:\'{optionsArray.notspamTypes}\', needle:\'{params.type}\')}', then:' block;' , else: 'none;')}">
-                            <f:link.action action="searchcomments" arguments="{moveto:5,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblnotspam' /></f:link.action>
+                            <f:link.action action="searchComments" arguments="{moveto:5,commentId:comment.uid}" class="comments-approve" ><f:translate key='tx_newscomment_domain_model_comment.lblnotspam' /></f:link.action>
                         </span>
 
                         <div class="comment-form-reply_{comment.uid}"></div>
@@ -171,7 +171,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         </f:then>
                     </f:if>
 
-                    <br><f:link.action action="searchcomments" arguments="{newsId:comment.newsuid}" ><span class="count-no-comments">{comment.totalcomments}</span></f:link.action>
+                    <br><f:link.action action="searchComments" arguments="{newsId:comment.newsuid}" ><span class="count-no-comments">{comment.totalcomments}</span></f:link.action>
                 </td>
                 <td>
                     <f:format.date format="F j, Y, g:i a">{comment.crdate}</f:format.date>

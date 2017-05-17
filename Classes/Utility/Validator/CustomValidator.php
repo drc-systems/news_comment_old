@@ -92,11 +92,18 @@ class CustomValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
         return($extensionTyposcript);
     }
 
+    /**
+     * Check bad words
+     *
+     * @param string $commentText commentText
+     *
+     * @return bool
+     */
     protected function checkBadWord($commentText)
     {
         $badWords = $this->settings['badwordFilterString'];
         $badWordsList = explode(',', $badWords);
-        foreach ($badWordsList as $key => $value) {
+        foreach ($badWordsList as $value) {
             if (trim($value) != '' && $commentText != '') {
                 $pos = strpos($commentText, trim($value));
                 if ($pos === false) {

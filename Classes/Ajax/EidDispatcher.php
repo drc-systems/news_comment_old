@@ -31,7 +31,7 @@ class EidDispatcher
    */
     public function __construct($TYPO3_CONF_VARS)
     {
-        $page = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('page');
+        // $page = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('page');
 
         $ajaxRequest = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_newscomment_newscomment');
         
@@ -69,11 +69,11 @@ class EidDispatcher
         );
         // Set configuration to call the plugin
         $this->configuration = array(
-            'pluginName' => $ajaxRequest['pluginName'],
+            'pluginName' => 'Newscommentajax',
             'vendorName' => 'DRCSystems',
             'extensionName' => 'NewsComment',
-            'controller' => $ajaxRequest['controller'],
-            'action' => 'addrating',
+            'controller' => 'Comment',
+            'action' => 'addRating',
             'params' => $ajaxRequest['param'],
             'mvc' => array(
                 'requestHandlers' => array(

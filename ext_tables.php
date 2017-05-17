@@ -9,6 +9,7 @@ if (!defined('TYPO3_MODE')) {
     'News Comment'
 );
 
+
 if (TYPO3_MODE === 'BE') {
 
     /**
@@ -18,11 +19,11 @@ if (TYPO3_MODE === 'BE') {
         'DRCSystems.' . $_EXTKEY,
         'web',   // Make module a submodule of 'web'
         'comments', // Submodule key
-        '',                     // Position
+        '',  // Position
         array(
-            'Comment' => 'listcomments, updatecomments, searchcomments, reply, list,
-             show, new, create, edit, update, delete',
-            'Rating' => 'list, show, new, create, edit, update, delete',
+            'Comment' => 'listComments, searchComments, reply,
+            new, create, update, delete',
+            'Rating' => 'list, new, create, update, delete',
         ),
         array(
             'access' => 'user,group',
